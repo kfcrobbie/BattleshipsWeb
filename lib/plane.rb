@@ -9,4 +9,8 @@ class Plane
 	def flying?
 		flying
 	end
+
+	def land
+		self.flying=false
+	end
 end

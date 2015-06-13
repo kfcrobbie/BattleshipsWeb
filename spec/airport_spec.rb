@@ -5,13 +5,13 @@ describe Airport do
 		expect(subject).to respond_to :land_plane
 	end
 
-	it 'A new Airport must allow planes to land' do
-		plane=Plane.new
+	xit 'A new Airport must allow planes to land' do
+		plane=double :plane
 		expect(subject.land_plane plane).to eq plane
 	end
 
 	it 'A plane must not be flying after landing' do 
-		plane=Plane.new
+		plane=
 		subject.land_plane plane
 		expect(plane).to_not be_flying
 	end
@@ -21,7 +21,12 @@ describe Airport do
 	end
 
 	it "A plane that takes off must be flying" do 
-		plane=subject.take_off
-		expect(plane).to be_flying
+		subject.land_plane Plane.new
+		expect(subject.take_off).to be_flying
+
+
 	end
 end
+
+ 
+
