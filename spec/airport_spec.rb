@@ -15,4 +15,13 @@ describe Airport do
 		subject.land_plane plane
 		expect(plane).to_not be_flying
 	end
+
+	it "A plane must allow planes to take off" do 
+		expect(subject).to respond_to :take_off
+	end
+
+	it "A plane that takes off must be flying" do 
+		plane=subject.take_off
+		expect(plane).to be_flying
+	end
 end
