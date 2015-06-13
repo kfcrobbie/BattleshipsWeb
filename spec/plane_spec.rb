@@ -1,7 +1,7 @@
 require 'plane'
 
 describe Plane do 
-	it 'A new plane is created on the ground' do 
-		expect(subject).to_not be_flying
+	it 'A new plane taking off shoudl be flying' do 
+		expect(subject).to be_flying
 	end
 end
