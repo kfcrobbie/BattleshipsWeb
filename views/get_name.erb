@@ -1,8 +1,14 @@
 <div>
-  <form action='/new_game'>
-    What is your name?
-    <input type="text" name="name">
-    <input type="submit" value="Submit">
-  </form>
+    <%if @name == "" || !@name %> 
+      <form action='/input_name'>
+        What is your name?
+        <input type="text" name="name">
+        <input type="submit" value="Submit">
+      </form>
+    <%else%> 
+    <action='/new_game'> 
+
+
+    <% end %>
 
 </div>

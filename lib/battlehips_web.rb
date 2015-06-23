@@ -10,12 +10,12 @@ class BattleshipsWeb < Sinatra::Base
   # start the server if ruby file executed directly
   run! if app_file == $0
 
-  get '/input_name' do 
+  get '/input_name' do
+    @name = params[:name]
     erb :get_name
   end
 
   get '/new_game' do 
-    name = params[:name]
-    "Welcome to a new game, #{name}"
+     "Welcome to a new game, #{@name}"
   end
 end
