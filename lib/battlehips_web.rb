@@ -16,6 +16,6 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/new_game' do 
     name = params[:name]
-    "Hello #{name}"
+    "Welcome to a new game, #{name}"
   end
 end
