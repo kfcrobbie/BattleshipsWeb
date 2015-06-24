@@ -32,12 +32,21 @@ class BattleshipsWeb < Sinatra::Base
 
 
     get '/place_ships' do 
-    @coordinates = params[:coordinates]
+    @coordinates1 = params[:coordinates1]
+    @orientation1 = params[:orientation1]
+    @coordinates2 = params[:coordinates2]
+    @coordinates3 = params[:coordinates3]
+    @coordinates4 = params[:coordinates4]
+    @coordinates5 = params[:coordinates5]
 
     # if @coordinates
-      @board = $game.own_board_view $game.player_1
-      $game.player_1.place_ship Ship.battleship, :A1
-      erb :placed_ships
+    $game.player_1.place_ship Ship.battleship, @coordinates1, @orientation1
+    $game.player_1.place_ship Ship.battleship, @coordinates2
+    $game.player_1.place_ship Ship.battleship, @coordinates3
+    $game.player_1.place_ship Ship.battleship, @coordinates4
+    $game.player_1.place_ship Ship.battleship, @coordinates5
+    @board = $game.own_board_view $game.player_1
+    erb :placed_ships
     
   end
 end
