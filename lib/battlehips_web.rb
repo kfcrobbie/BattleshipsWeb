@@ -11,11 +11,15 @@ class BattleshipsWeb < Sinatra::Base
   run! if app_file == $0
 
   get '/input_name' do
-    @name = params[:name]
-    erb :get_name
+        erb :get_name
   end
 
-  get '/new_game' do 
-     "Welcome to a new game, #{@name}"
+  get '/new_game' do
+    @name = params[:name]
+    if @name == "" || !@name
+      redirect '/input_name'
+    else
+      "Welcome to a new game, #{@name}"
+    end
   end
 end

@@ -20,4 +20,12 @@ feature 'Starting a new game' do
     click_button('Submit')
     expect(page).to have_content "What is your name?"
   end
+
+  scenario 'It allows the player to view their board' do
+    visit '/input_name'
+    fill_in('name', with:'Jon')
+    click_button('Submit')
+    expect(page).to have_content "Below is a picture of your board"
+  end
+
 end
