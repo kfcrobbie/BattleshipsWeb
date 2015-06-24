@@ -34,26 +34,18 @@ feature 'Starting a new game' do
     # click_button('Submit')
     visit 'new_game?name=Jon'
     fill_in('coordinates1', with: 'A1')
-    fill_in('orientation1', with:'vertically')
-    fill_in('coordinates2', with: 'B1')
-    fill_in('orientation2', with:'vertically')
-    fill_in('coordinates3', with: 'C1')
-    fill_in('orientation3', with:'vertically')
-    fill_in('coordinates4', with: 'D1')
-    fill_in('orientation4', with:'vertically')
-    fill_in('coordinates5', with: 'E4')
-    fill_in('orientation5', with:'horizontally')
+    select 'horizontally', from: "orientation1"
+    fill_in('coordinates2', with: 'A2')
+    select 'horizontally', from: "orientation2"
+    fill_in('coordinates3', with: 'A3')
+    select 'horizontally', from: "orientation3"
+    fill_in('coordinates4', with: 'A4')
+    select 'horizontally', from: "orientation4"
+    fill_in('coordinates5', with: 'A5')
+    select 'horizontally', from: "orientation5"
 
     click_button('Submit')
     expect(page).to have_content "BBBB"
   end
 
-  xscenario 'It allows ships to be placed on the board vertically' do
-    visit '/input_name'
-    fill_in('name', with:'A1')
-    fill_in('namw', with:'vertically')
-    click_button('Submit')
-    expect(page).to have_content
-
-  end
 end
