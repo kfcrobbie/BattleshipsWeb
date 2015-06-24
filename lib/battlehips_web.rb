@@ -1,4 +1,6 @@
 require 'sinatra/base'
+require 'battleships' 
+
 
 class BattleshipsWeb < Sinatra::Base
   get '/' do
@@ -19,7 +21,9 @@ class BattleshipsWeb < Sinatra::Base
     if @name == "" || !@name
       redirect '/input_name'
     else
-      "Welcome to a new game, #{@name}"
+      game = Game.new Player, Board
+      @board = game.own_board_view game.player_1
+      erb :newgame_screen
     end
   end
 end

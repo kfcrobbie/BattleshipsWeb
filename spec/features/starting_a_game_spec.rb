@@ -25,7 +25,7 @@ feature 'Starting a new game' do
     visit '/input_name'
     fill_in('name', with:'Jon')
     click_button('Submit')
-    expect(page).to have_content "Below is a picture of your board"
+    expect(page).to have_content "ABCDE"
   end
 
 end
