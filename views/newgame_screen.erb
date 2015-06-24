@@ -1,13 +1,22 @@
 <div>
 
+<% if @name %>
+
 	Welcome to a new game, <%=@name.capitalize %>!
+<% end %>
 
 	Please see your new board below.
   <pre><%= @board %></pre>
 
   Please choose where to place your ships:
 
+  <form action='/place_ships'>
+    <input type="text" coordinates=@coordinates>
+    <input type="submit" value="Submit">
+  </form>
+
 
 </div>
 
 
+ 

@@ -26,9 +26,18 @@ class BattleshipsWeb < Sinatra::Base
       @board = $game.own_board_view $game.player_1
       erb :newgame_screen
     end
+    
   end
 
-  #   $game.player_1.place_ship Ship.battleship, :A1
-  #     $game.player_1.place_ship Ship.battleship, :E7
-  # end
+
+
+    get '/place_ships' do 
+    @coordinates = params[:coordinates]
+
+    # if @coordinates
+      @board = $game.own_board_view $game.player_1
+      $game.player_1.place_ship Ship.battleship, :A1
+      erb :placed_ships
+    
+  end
 end
