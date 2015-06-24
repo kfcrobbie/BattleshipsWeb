@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'battleships' 
+require 'battleships'
 
 
 class BattleshipsWeb < Sinatra::Base
@@ -13,17 +13,22 @@ class BattleshipsWeb < Sinatra::Base
   run! if app_file == $0
 
   get '/input_name' do
-        erb :get_name
+    erb :get_name
   end
 
   get '/new_game' do
     @name = params[:name]
+
     if @name == "" || !@name
       redirect '/input_name'
     else
-      game = Game.new Player, Board
-      @board = game.own_board_view game.player_1
+      $game = Game.new Player, Board
+      @board = $game.own_board_view $game.player_1
       erb :newgame_screen
     end
   end
+
+  #   $game.player_1.place_ship Ship.battleship, :A1
+  #     $game.player_1.place_ship Ship.battleship, :E7
+  # end
 end
