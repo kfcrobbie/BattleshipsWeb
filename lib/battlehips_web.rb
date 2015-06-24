@@ -46,8 +46,6 @@ class BattleshipsWeb < Sinatra::Base
     @coordinates5 = params[:coordinates5]
     @orientation5 = params[:orientation5]
 
-
-    # if @coordinates
     $game.player_1.place_ship Ship.submarine, @coordinates1, @orientation1
     $game.player_1.place_ship Ship.destroyer, @coordinates2, @orientation2
     $game.player_1.place_ship Ship.cruiser, @coordinates3, @orientation3
@@ -56,5 +54,13 @@ class BattleshipsWeb < Sinatra::Base
     @board = $game.own_board_view $game.player_1
     erb :placed_ships
 
+  end
+
+  get '/action' do 
+    @aim = params[:aim]
+
+    $game.player_2.shoot :A1
+    @board = $game.own_board_view $game.player_1
+    erb :action
   end
 end

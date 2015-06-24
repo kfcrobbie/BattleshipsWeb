@@ -48,4 +48,23 @@ feature 'Starting a new game' do
     expect(page).to have_content "BBBB"
   end
 
+  scenario 'It allows ships to be hit' do 
+     visit 'new_game?name=Jon'
+    fill_in('coordinates1', with: 'A1')
+    select 'horizontally', from: "orientation1"
+    fill_in('coordinates2', with: 'A2')
+    select 'horizontally', from: "orientation2"
+    fill_in('coordinates3', with: 'A3')
+    select 'horizontally', from: "orientation3"
+    fill_in('coordinates4', with: 'A4')
+    select 'horizontally', from: "orientation4"
+    fill_in('coordinates5', with: 'A5')
+    select 'horizontally', from: "orientation5"
+    click_button('Submit')
+    fill_in 'Aim:', with:'A1'
+    click_button('Fire') 
+    expect(page).to have_content "*"
+  end
+
+
 end
