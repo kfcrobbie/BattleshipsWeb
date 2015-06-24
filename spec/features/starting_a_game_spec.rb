@@ -28,4 +28,11 @@ feature 'Starting a new game' do
     expect(page).to have_content "ABCDE"
   end
 
+  scenario 'It allows ships to be placed on the board' do 
+    visit '/input_name'
+    fill_in('name', with:'Jon')
+    click_button('Submit')
+    expect(page).to have_content "BBBB"
+  end
+
 end
