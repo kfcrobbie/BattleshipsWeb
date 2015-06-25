@@ -28,7 +28,10 @@ class BattleshipsWeb < Sinatra::Base
     end
   end
 
-  get '/place_ships' do
+  get '/input_name2' do
+    @name2
+
+  get '/game' do
     $game.player_1.place_ship Ship.submarine, params[:coordinates1], params[:orientation1]
     $game.player_1.place_ship Ship.destroyer, params[:coordinates2], params[:orientation2]
     $game.player_1.place_ship Ship.cruiser, params[:coordinates3], params[:orientation3]
