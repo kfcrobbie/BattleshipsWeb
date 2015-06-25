@@ -13,18 +13,17 @@ class BattleshipsWeb < Sinatra::Base
   # start the server if ruby file executed directly
   run! if app_file == $0
 
-  get '/input_name' do
+  get '/input_name1' do
     erb :get_name
   end
 
-  get '/new_game' do
-    @name = params[:name]
+  get '/place_ships1' do
+    @name1 = params[:name1]
 
-    if @name == "" || !@name
-      redirect '/input_name'
+    if @name1 == "" || !@name1
+      redirect '/input_name1'
     else
       $game = Game.new Player, Board
-      @board = $game.own_board_view $game.player_1
       erb :newgame_screen
     end
   end

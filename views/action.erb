@@ -7,4 +7,12 @@
     </form>
 
   <pre><%= $game.opponent_board_view $game.player_1 %></pre>  
+
+  <% if $game.has_winner? %>
+    <% if $game.player_1.winner? %>
+    Player 1 Wins!!
+    <% else %> 
+    Player 2 Wins!!
+    <% end %>
+  <% end %>
 </div>

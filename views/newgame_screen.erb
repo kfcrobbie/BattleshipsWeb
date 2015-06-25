@@ -6,7 +6,7 @@
 <% end %>
 
 	Please see your new board below.
-  <pre><%= @board %></pre>
+  <pre><%= $game.own_board_view $game.player_1 %></pre>
 
   Please choose where to place your ships:
 
@@ -24,18 +24,21 @@
         <option value="vertically">vertically</option>
         <option value="horizontally">horizontally</option>
     </select> </p>
+
   <p>  Cruiser - 3:
     <input type="text" name="coordinates3">
      <select name="orientation3">
         <option value="vertically">vertically</option>
         <option value="horizontally">horizontally</option>
     </select> </p>
+
   <p>  Battleship - 4:  
     <input type="text" name="coordinates4">
      <select name="orientation4">
         <option value="vertically">vertically</option>
         <option value="horizontally">horizontally</option>
     </select> </p>
+    
   <p>  Aircraft Carrier - 5:  
     <input type="text" name="coordinates5">
      <select name="orientation5">
