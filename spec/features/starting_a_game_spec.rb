@@ -79,9 +79,9 @@ feature 'Starting a new game' do
     fill_in('coordinates5', with: 'A5')
     select 'horizontally', from: "orientation5"
     click_button('Submit')
-    fill_in "aim", with: 'A1'
-    click_button('FIRE')
     fill_in "aim", with: 'A2'
+    click_button('FIRE')
+    fill_in "aim", with: 'B2'
     click_button('FIRE')
     expect(page).to have_content "**"
   end

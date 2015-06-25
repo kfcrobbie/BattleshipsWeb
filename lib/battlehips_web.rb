@@ -26,7 +26,6 @@ class BattleshipsWeb < Sinatra::Base
       @board = $game.own_board_view $game.player_1
       erb :newgame_screen
     end
-
   end
 
 
@@ -51,7 +50,6 @@ class BattleshipsWeb < Sinatra::Base
     $game.player_1.place_ship Ship.cruiser, @coordinates3, @orientation3
     $game.player_1.place_ship Ship.battleship, @coordinates4, @orientation4
     $game.player_1.place_ship Ship.aircraft_carrier, @coordinates5, @orientation5
-    @board = $game.own_board_view $game.player_1
     erb :placed_ships
 
   end
@@ -59,9 +57,6 @@ class BattleshipsWeb < Sinatra::Base
   get '/action' do 
     @aim = params[:aim]
     $game.player_2.shoot @aim.to_sym
-    
     erb :action
-
-    
   end
 end
