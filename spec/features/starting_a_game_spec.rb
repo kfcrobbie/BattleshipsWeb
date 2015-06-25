@@ -85,6 +85,5 @@ feature 'Starting a new game' do
     click_button('FIRE')
     expect(page).to have_content "**"
   end
-
  
 end

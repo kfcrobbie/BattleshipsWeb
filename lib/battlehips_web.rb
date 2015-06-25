@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'battleships'
+require_relative 'random_coordinates'
 
 
 class BattleshipsWeb < Sinatra::Base
@@ -44,8 +45,10 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/action' do
     @aim = params[:aim]
+    random = Random_coordinates.new
     $game.player_1.shoot @aim.to_sym
-    $game.player_1.shoot @aim.
+    $game.player_2.shoot random.random_shot.to_sym
     erb :action
   end
+
 end
