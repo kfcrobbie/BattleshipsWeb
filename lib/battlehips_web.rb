@@ -58,9 +58,10 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/action' do 
     @aim = params[:aim]
-
-    $game.player_2.shoot :A1
-    @board = $game.own_board_view $game.player_1
+    $game.player_2.shoot @aim.to_sym
+    
     erb :action
+
+    
   end
 end
