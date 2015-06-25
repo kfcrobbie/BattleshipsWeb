@@ -28,35 +28,18 @@ class BattleshipsWeb < Sinatra::Base
     end
   end
 
-
-
   get '/place_ships' do
-    @coordinates1 = params[:coordinates1]
-    @orientation1 = params[:orientation1]
-    @coordinates2 = params[:coordinates2]
-    @orientation2 = params[:orientation2]
-
-    @coordinates3 = params[:coordinates3]
-    @orientation3 = params[:orientation3]
-
-    @coordinates4 = params[:coordinates4]
-    @orientation4 = params[:orientation4]
-
-    @coordinates5 = params[:coordinates5]
-    @orientation5 = params[:orientation5]
-
-    $game.player_1.place_ship Ship.submarine, @coordinates1, @orientation1
-    $game.player_1.place_ship Ship.destroyer, @coordinates2, @orientation2
-    $game.player_1.place_ship Ship.cruiser, @coordinates3, @orientation3
-    $game.player_1.place_ship Ship.battleship, @coordinates4, @orientation4
-    $game.player_1.place_ship Ship.aircraft_carrier, @coordinates5, @orientation5
+    $game.player_1.place_ship Ship.submarine, params[:coordinates1], params[:orientation1]
+    $game.player_1.place_ship Ship.destroyer, params[:coordinates2], params[:orientation2]
+    $game.player_1.place_ship Ship.cruiser, params[:coordinates3], params[:orientation3]
+    $game.player_1.place_ship Ship.battleship, params[:coordinates4], params[:orientation4]
+    $game.player_1.place_ship Ship.aircraft_carrier, params[:coordinates5], params[:orientation5]
     erb :placed_ships
-
   end
 
-  get '/action' do 
+  get '/action' do
     @aim = params[:aim]
-    $game.player_2.shoot @aim.to_sym
+    $game.player_1.shoot @aim.to_sym
     erb :action
   end
 end
