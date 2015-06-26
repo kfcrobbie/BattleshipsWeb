@@ -2,10 +2,10 @@
 
 <div>
 
-<% if @name %>
 
-  Welcome to a new game, <%=@name.capitalize %>!
-<% end %>
+<!-- 
+  Welcome to a new game, <%=@name.capitalize %>! -->
+
 
   Please see your new board below.
   <pre><%= $game.own_board_view $game.player_2 %></pre>
@@ -50,6 +50,8 @@
 
     <input type="submit" value="Submit">
   </form>
+
+  <pre><%= $game.own_board_view $game.player_1 %></pre>
 
 
 </div>

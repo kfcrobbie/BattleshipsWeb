@@ -13,19 +13,14 @@ class BattleshipsWeb < Sinatra::Base
   # start the server if ruby file executed directly
   run! if app_file == $0
 
-  get '/input_name1' do
-    erb :get_name1
+  get '/player/:player' do |player|
+    erb :get_name, locals: {player: player}
   end
 
-  get '/place_ships1' do
-    @name1 = params[:name1]
 
-    if @name1 == "" || !@name1
-      redirect '/input_name1'
-    else
-      $game = Game.new Player, Board
-      erb :newgame_screen1 
-    end
+  get '/place/:player' do |player|
+    $game = Game.new Player, Board
+    erb "newgame_#{player}".to_sym
   end
 
    get '/player1_board' do
@@ -37,19 +32,6 @@ class BattleshipsWeb < Sinatra::Base
     erb :placed_ships1
   end
 
-  get '/input_name2' do
-    erb :get_name2
-  end
-
-   get '/place_ships2' do
-    @name2 = params[:name2]
-
-    if @name2 == "" || !@name2
-      redirect '/input_name2'
-    else
-      erb :newgame_screen2
-    end
-  end
 
 
    get '/player2_board' do
