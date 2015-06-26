@@ -47,7 +47,6 @@ class BattleshipsWeb < Sinatra::Base
     if @name2 == "" || !@name2
       redirect '/input_name2'
     else
-      $game = Game.new Player, Board
       erb :newgame_screen2
     end
   end
