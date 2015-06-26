@@ -14,7 +14,7 @@ class BattleshipsWeb < Sinatra::Base
   run! if app_file == $0
 
   get '/input_name1' do
-    erb :get_name
+    erb :get_name1
   end
 
   get '/place_ships1' do
@@ -24,33 +24,69 @@ class BattleshipsWeb < Sinatra::Base
       redirect '/input_name1'
     else
       $game = Game.new Player, Board
-      erb :newgame_screen
+      erb :newgame_screen1 
     end
   end
 
-  get '/input_name2' do
-    @name2
-
-  get '/game' do
+   get '/player1_board' do
     $game.player_1.place_ship Ship.submarine, params[:coordinates1], params[:orientation1]
     $game.player_1.place_ship Ship.destroyer, params[:coordinates2], params[:orientation2]
     $game.player_1.place_ship Ship.cruiser, params[:coordinates3], params[:orientation3]
     $game.player_1.place_ship Ship.battleship, params[:coordinates4], params[:orientation4]
     $game.player_1.place_ship Ship.aircraft_carrier, params[:coordinates5], params[:orientation5]
-    $game.player_2.place_ship Ship.submarine, :A3, :vertically
-    $game.player_2.place_ship Ship.destroyer, :H10, :horizontally
-    $game.player_2.place_ship Ship.cruiser, :J2, :vertically
-    $game.player_2.place_ship Ship.battleship, :D1, :vertically
-    $game.player_2.place_ship Ship.aircraft_carrier, :A10, :horizontally
-    erb :placed_ships
+    erb :placed_ships1
   end
 
-  get '/action' do
-    @aim = params[:aim]
-    random = Random_coordinates.new
-    $game.player_1.shoot @aim.to_sym
-    $game.player_2.shoot random.random_shot.to_sym
-    erb :action
+  get '/input_name2' do
+    erb :get_name2
   end
+
+   get '/place_ships2' do
+    @name2 = params[:name2]
+
+    if @name2 == "" || !@name2
+      redirect '/input_name2'
+    else
+      $game = Game.new Player, Board
+      erb :newgame_screen2
+    end
+  end
+
+
+   get '/player2_board' do
+    $game.player_2.place_ship Ship.submarine, params[:coordinates2_1], params[:orientation2_1]
+    $game.player_2.place_ship Ship.destroyer, params[:coordinates2_2], params[:orientation2_2]
+    $game.player_2.place_ship Ship.cruiser, params[:coordinates2_3], params[:orientation2_3]
+    $game.player_2.place_ship Ship.battleship, params[:coordinates2_4], params[:orientation2_4]
+    $game.player_2.place_ship Ship.aircraft_carrier, params[:coordinates2_5], params[:orientation2_5]
+    erb :placed_ships2
+  end
+
+
+  get '/start' do
+    erb :start
+  end
+
+  get '/player1_turn' do 
+    @aim1 = params[:aim1]
+    $game.player_2.shoot @aim1.to_sym
+    erb :player1_board
+  end 
+
+  get '/player2_turn' do 
+    @aim2 = params[:aim2]
+    $game.player_1.shoot @aim2.to_sym
+    erb :player2_board
+  end 
+
+
+
+
+    # @aim = params[:aim]
+    # random = Random_coordinates.new
+    # $game.player_1.shoot @aim.to_sym
+    # $game.player_2.shoot random.random_shot.to_sym
+    # erb :action
+    #end
 
 end

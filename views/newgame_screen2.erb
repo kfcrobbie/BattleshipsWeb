@@ -1,0 +1,55 @@
+<!-- newgame_screen2 -->
+
+<div>
+
+<% if @name %>
+
+  Welcome to a new game, <%=@name.capitalize %>!
+<% end %>
+
+  Please see your new board below.
+  <pre><%= $game.own_board_view $game.player_2 %></pre>
+
+  Please choose where to place your ships:
+
+  <form action='/player2_board'>
+    Submarine - 1:
+    <input type="text" name="coordinates2_1">
+    <select name="orientation2_1">
+        <option value="vertically">vertically</option>
+        <option value="horizontally">horizontally</option>
+
+    </select>
+  <p>  Destroyer - 2: 
+     <input type="text" name="coordinates2_2"> 
+     <select name="orientation2_2">
+        <option value="vertically">vertically</option>
+        <option value="horizontally">horizontally</option>
+    </select> </p>
+
+  <p>  Cruiser - 3:
+    <input type="text" name="coordinates2_3">
+     <select name="orientation2_3">
+        <option value="vertically">vertically</option>
+        <option value="horizontally">horizontally</option>
+    </select> </p>
+
+  <p>  Battleship - 4:  
+    <input type="text" name="coordinates2_4">
+     <select name="orientation2_4">
+        <option value="vertically">vertically</option>
+        <option value="horizontally">horizontally</option>
+    </select> </p>
+    
+  <p>  Aircraft Carrier - 5:  
+    <input type="text" name="coordinates2_5">
+     <select name="orientation2_5">
+        <option value="vertically">vertically</option>
+        <option value="horizontally">horizontally</option>
+    </select> </p>
+
+    <input type="submit" value="Submit">
+  </form>
+
+
+</div>
